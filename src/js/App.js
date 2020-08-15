@@ -6,7 +6,6 @@ import Home from "./components/Home";
 const App = () => {
   return (
     <>
-      <div>Hello to the base movie app.</div>
       <Home>
         <Switch>
           <Route path="/" exact>

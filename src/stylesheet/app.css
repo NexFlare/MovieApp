@@ -1,3 +1,7 @@
+.app-container {
+  max-width: 1440px;
+  padding-top: 80px;
+}
 .card {
   background: #fff;
   border-radius: 5px;
@@ -15,6 +19,7 @@
 .m-card-container {
   padding: 8px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .m-card-img-container {
