@@ -12,7 +12,6 @@ const initialState = getInitialState();
 const reducer = (state, action) => {
   if (action.type === ADD_FAV) {
     const { id, title, year, poster } = action.payload || {};
-    console.log("Fav add");
     return {
       ...state,
       [id]: {
@@ -23,7 +22,9 @@ const reducer = (state, action) => {
     };
   }
   if (action.type === REMOVE_FAV) {
-    console.log("Remove fav");
+    console.log(delete state[action.payload.id]);
+    console.log(state);
+    return { ...state };
   }
   return state;
 };
@@ -36,6 +37,11 @@ export function FavProvider({ children }) {
       JSON.stringify({ ...fav, [id]: { title, poster, id, year } })
     );
   };
-  const value = { fav, addFavMovie };
+
+  const removeFavMovie = id => {
+    dispatch({ type: REMOVE_FAV, payload: { id } });
+    localStorage.setItem("fav", JSON.stringify(fav));
+  };
+  const value = { fav, addFavMovie, removeFavMovie };
   return <FavContext.Provider value={value}>{children}</FavContext.Provider>;
 }

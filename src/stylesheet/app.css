@@ -47,3 +47,11 @@
   display: flex;
   justify-content: center;
 }
+
+.fa-heart {
+  color: grey;
+}
+
+.fa-heart.liked {
+  color: red;
+}

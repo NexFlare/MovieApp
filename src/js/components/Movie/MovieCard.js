@@ -4,21 +4,27 @@ function MovieCard({
   movieDetail: { Poster: poster, Title: title, Year: year, imdbID: id }
 }) {
   let titleToDisplay = title;
-  const { addFavMovie } = useContext(FavContext);
+  const { addFavMovie, fav, removeFavMovie } = useContext(FavContext);
   if (title.length > 25) {
     titleToDisplay = title.substring(0, 25) + "..";
   }
+
+  const handleLikeClicked = () => {
+    if (fav[id]) removeFavMovie(id);
+    else addFavMovie({ title, year, poster, id });
+  };
   return (
     <div className="card card-shadow">
       <div className="m-card-container">
-        <div
-          className="m-card-img-container"
-          onClick={() => addFavMovie({ title, year, poster, id })}
-        >
+        <div className="m-card-img-container">
           <img src={poster} alt={title} className="m-img"></img>
         </div>
         <p className="m-heading">{titleToDisplay}</p>
         <p>{year}</p>
+        <i
+          className={`fas fa-heart ${fav[id] ? "liked" : ""}`}
+          onClick={handleLikeClicked}
+        ></i>
       </div>
     </div>
   );
