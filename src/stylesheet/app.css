@@ -37,3 +37,8 @@
   flex-flow: row wrap;
   justify-content: center;
 }
+
+.search-component {
+  display: flex;
+  justify-content: center;
+}
