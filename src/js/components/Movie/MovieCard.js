@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { FavContext } from "../FavContext";
 function MovieCard({
-  movieDetail: { Poster: poster, Title: title, Year: year, imdbID: id }
+  movieDetail: { Poster: poster, Title: title, Year: year, imdbID: id },
+  favTypeCard = true
 }) {
   let titleToDisplay = title;
   const { addFavMovie, fav, removeFavMovie } = useContext(FavContext);
@@ -20,11 +21,15 @@ function MovieCard({
           <img src={poster} alt={title} className="m-img"></img>
         </div>
         <p className="m-heading">{titleToDisplay}</p>
-        <p>{year}</p>
-        <i
-          className={`fas fa-heart ${fav[id] ? "liked" : ""}`}
-          onClick={handleLikeClicked}
-        ></i>
+        <p className="year">{year}</p>
+        {favTypeCard ? (
+          <div className="m-like-container">
+            <i
+              className={`fas fa-heart ${fav[id] ? "liked" : ""}`}
+              onClick={handleLikeClicked}
+            ></i>
+          </div>
+        ) : null}
       </div>
     </div>
   );
