@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import "../../stylesheet/search.css";
+import TextField from "@material-ui/core/TextField";
+import { types } from "../constants/index";
+import { MenuItem, Button } from "@material-ui/core";
 
 function SearchComponent({ searchMovie }) {
   const [name, setName] = useState("");
@@ -9,25 +13,44 @@ function SearchComponent({ searchMovie }) {
   };
   return (
     <div className="search-component">
-      <input
-        type="text"
-        placeholder="Name"
+      <TextField
         value={name}
         onChange={e => setName(e.target.value)}
-      ></input>
-      <input
-        type="text"
-        placeholder="Type"
+        type="search"
+        variant="outlined"
+        label="Search field"
+        className="search-element-high search-element"
+      />
+      <TextField
+        id="standard-select-currency"
+        select
+        label="Type"
         value={type}
+        variant="outlined"
         onChange={e => setType(e.target.value)}
-      ></input>
-      <input
-        type="text"
-        placeholder="Year"
+        className="search-element"
+      >
+        {types.map(type => (
+          <MenuItem key={type.value} value={type.value}>
+            {type.label}
+          </MenuItem>
+        ))}
+      </TextField>
+      <TextField
         value={year}
+        label="Year"
+        variant="outlined"
         onChange={e => setYear(e.target.value)}
-      ></input>
-      <button onClick={handleSearch}>Search</button>
+        className="search-element"
+      />
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleSearch}
+        className="search-element"
+      >
+        Search
+      </Button>
     </div>
   );
 }

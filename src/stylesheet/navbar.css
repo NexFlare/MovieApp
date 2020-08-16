@@ -21,6 +21,12 @@
   margin-right: 32px;
 }
 
+.m-navbar-heading {
+  padding: 0 50px;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
 .m-navbar-action-b {
   display: flex;
 }

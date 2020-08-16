@@ -1,6 +1,7 @@
 .app-container {
   max-width: 1440px;
   padding-top: 80px;
+  position: relative;
 }
 .card {
   background: #fff;
@@ -9,7 +10,7 @@
   height: 400px;
   margin: 1rem;
   position: relative;
-  width: 250px;
+  flex: 0 1 20%;
 }
 
 .card-shadow {
@@ -72,4 +73,16 @@
 }
 a {
   text-decoration: none;
+}
+
+@media only screen and (min-device-width: 501px) and (max-device-width: 768px) {
+  .card {
+    flex: 1 0 44%;
+  }
+}
+
+@media only screen and (max-device-width: 500px) {
+  .card {
+    flex: 1 0 95%;
+  }
 }

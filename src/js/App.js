@@ -3,6 +3,7 @@ import MovieList from "./components/Movie/MovieList";
 import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import FavMovieList from "./components/Movie/FavMovieList";
+import MovieDetail from "./components/Movie/MovieDetail";
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
           </Route>
           <Route path="/fav" exact>
             <FavMovieList />
+          </Route>
+          <Route path="/:id">
+            <MovieDetail />
           </Route>
         </Switch>
       </Home>

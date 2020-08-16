@@ -1,21 +1,26 @@
 import React, { useContext } from "react";
 import { FavContext } from "../FavContext";
+import { useHistory } from "react-router-dom";
 function MovieCard({
   movieDetail: { Poster: poster, Title: title, Year: year, imdbID: id },
   favTypeCard = true
 }) {
   let titleToDisplay = title;
+  let history = useHistory();
   const { addFavMovie, fav, removeFavMovie } = useContext(FavContext);
   if (title.length > 25) {
     titleToDisplay = title.substring(0, 25) + "..";
   }
 
+  const handleCardClicked = () => {
+    history.push(`/${id}`);
+  };
   const handleLikeClicked = () => {
     if (fav[id]) removeFavMovie(id);
     else addFavMovie({ title, year, poster, id });
   };
   return (
-    <div className="card card-shadow">
+    <div className="card card-shadow" onClick={handleCardClicked}>
       <div className="m-card-container">
         <div className="m-card-img-container">
           <img src={poster} alt={title} className="m-img"></img>
