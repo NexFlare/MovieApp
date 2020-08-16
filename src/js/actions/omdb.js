@@ -6,3 +6,11 @@ export const getMovies = async ({ name = "", year = "", type = "" }) => {
   const data = await response.json();
   return data;
 };
+
+export const getMovieById = async id => {
+  const response = await fetch(
+    `${OMDB_BASE_URL}/?i=${id}&apikey=${process.env.REACT_APP_OMDB_KEY}`
+  );
+  const data = await response.json();
+  return data;
+};

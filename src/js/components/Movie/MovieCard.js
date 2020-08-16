@@ -20,13 +20,13 @@ function MovieCard({
     else addFavMovie({ title, year, poster, id });
   };
   return (
-    <div className="card card-shadow" onClick={handleCardClicked}>
+    <div className="card card-shadow flx-20" onClick={handleCardClicked}>
       <div className="m-card-container">
         <div className="m-card-img-container">
           <img src={poster} alt={title} className="m-img"></img>
         </div>
         <p className="m-heading">{titleToDisplay}</p>
-        <p className="year">{year}</p>
+        <p className="m-subheading">{year}</p>
         {favTypeCard ? (
           <div className="m-like-container">
             <i
